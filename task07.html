@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Engine Animation</title>
+    <style>
+        /* CSS for the train engine */
+        .train-engine {
+            width: 100px;
+            height: 50px;
+            background-image: url
+            background-size: cover;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 2s linear;
+        }
+
+        /* CSS for the heading */
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Click the following button to start the animation</h1>
+    <div class="train-engine"></div>
+    <button id="startButton">Start</button>
+    <button id="stopButton">Stop</button>
+
+    <script>
+        // JavaScript for animation
+        const trainEngine = document.querySelector('.train-engine');
+        const startButton = document.getElementById('startButton');
+        const stopButton = document.getElementById('stopButton');
+        let animationInterval;
+
+        // Function to start the animation
+        function startAnimation() {
+            trainEngine.style.transform = 'translateX(100%)';
+            animationInterval = setInterval(() => {
+                trainEngine.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    trainEngine.style.transform = 'translateX(-100%)';
+                }, 10);
+            }, 2000);
+        }
+
+        // Function to stop the animation
+        function stopAnimation() {
+            clearInterval(animationInterval);
+            trainEngine.style.transform = 'translateX(-100%)';
+        }
+
+        // Event listeners for buttons
+        startButton.addEventListener('click', startAnimation);
+        stopButton.addEventListener('click', stopAnimation);
+    </script>
+</body>
+</html>
